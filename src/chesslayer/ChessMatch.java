@@ -1,7 +1,6 @@
 package chesslayer;
 
 import boardlayer.Board;
-import boardlayer.Position;
 import chesslayer.pieces.King;
 import chesslayer.pieces.Rook;
 
@@ -24,8 +23,12 @@ public class ChessMatch {
 		return temp;
 	}
 	
+	private void PlaceNewPiece(char column, int row, ChessPiece piece) {
+		board.PlacePiece(piece, new ChessPosition(column, row).toPosition());
+	}
+	
 	private void initialSetup() {
-		board.PlacePiece(new Rook(board, Color.BLACK), new Position(0, 0));
-		board.PlacePiece(new King(board, Color.BLACK), new Position(0, 4));
+		PlaceNewPiece('d', 1, new Rook(board, Color.BLACK));
+		PlaceNewPiece('a', 1, new King(board, Color.BLACK));
 	}
 }
