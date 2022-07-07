@@ -30,9 +30,11 @@ public class Program {
 			catch (ChessException e) {
 				System.out.println(e.getMessage());
 				sc.nextLine();
+				sc.nextLine();
 			}
 			catch (InputMismatchException e) {
 				System.out.println(e.getMessage());
+				sc.nextLine();
 				sc.nextLine();
 			}
 		}

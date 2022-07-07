@@ -25,21 +25,21 @@ public class Board {
 	
 	public Piece piece(int row, int column) {
 		if (!positionExists(row, column)) {
-			throw new BoardException("Erro, nao existe posiçao no tabuleiro com as informaçoes passadas.");
+			throw new BoardException("Erro, nao existe posicao no tabuleiro com as informacoes passadas.");
 		}
 		return pieces[row][column];
 	}
 	
 	public Piece piece(Position position) {
 		if (!positionExists(position)) {
-			throw new BoardException("Erro, nao existe posiçao no tabuleiro com as informaçoes passadas.");
+			throw new BoardException("Erro, nao existe posicao no tabuleiro com as informacoes passadas.");
 		}
 		return pieces[position.getRow()][position.getColumn()];
 	}
 	
 	public void placePiece(Piece piece, Position position) {
 		if (ThereIsAPiece(position)) {
-			throw new BoardException("Erro, ja existe uma peça na posição passada.");
+			throw new BoardException("Erro, ja existe uma peca na posicao passada.");
 		}
 		this.pieces[position.getRow()][position.getColumn()] = piece;
 		piece.position = position;
@@ -47,7 +47,7 @@ public class Board {
 	
 	public Piece removePiece(Position position) {
 		if (!positionExists(position)) {
-			throw new BoardException("Erro, nao existe posiçao no tabuleiro com as informaçoes passadas.");
+			throw new BoardException("Erro, nao existe posicao no tabuleiro com as informacoes passadas.");
 		}
 		if (!ThereIsAPiece(position)) {
 			return null;
@@ -68,7 +68,7 @@ public class Board {
 	
 	public boolean ThereIsAPiece(Position position) {
 		if (!positionExists(position)) {
-			throw new BoardException("Erro, nao existe posiçao no tabuleiro com as informaçoes passadas.");
+			throw new BoardException("Erro, nao existe posicao no tabuleiro com as informacoes passadas.");
 		}
 		
 		return piece(position) != null;

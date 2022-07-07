@@ -35,7 +35,7 @@ public class ChessMatch {
 	
 	private void validateSourcePosition(Position source) {
 		if(!board.ThereIsAPiece(source)) {
-			throw new ChessException("Erro, nao ha nenhuma peça na origem passada");
+			throw new ChessException("Erro, nao ha nenhuma peca na origem passada");
 		}
 		if (!board.piece(source).isThereAnyPossibleMove()) {
 			throw new ChessException("Erro, peca nao possui nenhum movimento possivel");
