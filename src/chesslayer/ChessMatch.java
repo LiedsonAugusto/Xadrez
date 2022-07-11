@@ -34,6 +34,12 @@ public class ChessMatch {
 		return (ChessPiece) capturedPiece;
 	}
 	
+	public boolean[][] possibleMoves(ChessPosition sourcePosition){
+		Position source = sourcePosition.toPosition();
+		validateSourcePosition(source);
+		return board.piece(source).possibleMoves();
+	}
+	
 	private void validateSourcePosition(Position source) {
 		if(!board.ThereIsAPiece(source)) {
 			throw new ChessException("Erro, nao ha nenhuma peca na origem passada");
