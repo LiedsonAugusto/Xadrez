@@ -3,6 +3,7 @@ package application;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import chesslayer.ChessMatch;
 import chesslayer.ChessPiece;
 import chesslayer.ChessPosition;
 import chesslayer.Color;
@@ -45,6 +46,13 @@ public class UsuaryInterface {
 		} catch (RuntimeException e) {
 			throw new InputMismatchException("Erro na leitura, valores incorretos para uma partida de xadrez");
 		}
+	}
+	
+	public static void printMatch(ChessMatch chessMatch) {
+		printBoard(chessMatch.getPieces());
+		System.out.println();
+		System.out.print("Turn: " + chessMatch.getTurn() + '\n');
+		System.out.print("Waiting for player: " + chessMatch.getColor());
 	}
 
 	public static void printBoard(ChessPiece[][] piece) {

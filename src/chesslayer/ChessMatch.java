@@ -8,11 +8,23 @@ import chesslayer.pieces.Rook;
 
 public class ChessMatch {
 
+	private int turn;
+	private Color currentPlayer;
 	private Board board;
 
 	public ChessMatch() {
 		board = new Board(8, 8);
+		turn = 1;
+		currentPlayer = Color.WHITE;
 		initialSetup();
+	}
+	
+	public int getTurn() {
+		return turn;
+	}
+	
+	public Color getColor() {
+		return currentPlayer;
 	}
 
 	public ChessPiece[][] getPieces() {
@@ -31,6 +43,7 @@ public class ChessMatch {
 		validateSourcePosition(source);
 		validateTargetPosition(source, target);
 		Piece capturedPiece = makeMove(source, target);
+		nextTurn();
 		return (ChessPiece) capturedPiece;
 	}
 	
@@ -43,6 +56,9 @@ public class ChessMatch {
 	private void validateSourcePosition(Position source) {
 		if(!board.ThereIsAPiece(source)) {
 			throw new ChessException("Erro, nao ha nenhuma peca na origem passada");
+		}
+		if (currentPlayer != ((ChessPiece)board.piece(source)).getColor()) {
+			throw new ChessException("Erro, a peca escolhida nao e sua");
 		}
 		if (!board.piece(source).isThereAnyPossibleMove()) {
 			throw new ChessException("Erro, peca nao possui nenhum movimento possivel");
@@ -64,6 +80,11 @@ public class ChessMatch {
 
 	private void placeNewPiece(char column, int row, ChessPiece piece) {
 		board.placePiece(piece, new ChessPosition(column, row).toPosition());
+	}
+	
+	private void nextTurn() {
+		turn++;
+		this.currentPlayer = (currentPlayer == Color.WHITE) ? Color.BLACK : Color.WHITE;
 	}
 
 	private void initialSetup() {
