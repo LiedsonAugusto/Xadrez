@@ -57,9 +57,14 @@ public class UsuaryInterface {
 		printCapturedPieces(capturedPiece);
 		System.out.println();
 		System.out.print("Turn: " + chessMatch.getTurn() + '\n');
-		System.out.println("Waiting for player: " + (chessMatch.getColor()));
-		if (chessMatch.getCheck()) {
-			System.out.println(ANSI_RED + "CHECK!" + ANSI_RESET);
+		if (!chessMatch.getCheckMate()) {
+			System.out.println("Waiting for player: " + (chessMatch.getColor()));
+			if (chessMatch.getCheck()) {
+				System.out.println(ANSI_RED + "CHECK!" + ANSI_RESET);
+			}
+		} else {
+			System.out.println("CHECKMATE!");
+			System.out.print("Winner: " + chessMatch.getColor());
 		}
 	}
 
