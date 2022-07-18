@@ -38,6 +38,12 @@ public class Program {
 				if (capturedPiece != null) {
 					capturedpiece.add(capturedPiece);
 				}
+				
+				if (chessmatch.getPromoted() != null) {
+					System.out.print("Digite para qual tipo de peca deseja promover (B/N/R/Q): ");
+					String type = sc.nextLine();
+					chessmatch.replacePromotedPiece(type);
+				}
 			}
 			catch (ChessException e) {
 				System.out.println(e.getMessage());
